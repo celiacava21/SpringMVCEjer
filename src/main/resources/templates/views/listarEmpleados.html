@@ -1,6 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <style>
+        button {
+    background-color: #d6e047;
+    border: none;
+    color: #050808;
+    padding: 12px 24px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.button:hover {
+    background-color: #c7d234;
+}
+         body {
+        font-family: 'Montserrat', sans-serif;
+    }
+   table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+        background-color: #ffffff;
+        box-shadow: 0 0 20px rgba(250, 6, 6, 0.1);
+        border-radius: 10px;
+        
+    }
+    th, td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #000000;
+    }
+    th {
+        background-color: #e4f500;
+        color: #000000;
+    }
+    tr:hover {
+        background-color: #000000;
+    }
+    td a {
+     display: inline-block;
+     padding: 5px 10px;
+     background-color: #d6e047;
+     color: #ffffff;
+     text-decoration: none;
+     border-radius: 5px;
+ }
+ 
+ td a:hover {
+     background-color: #ffffff;
+ }
+    
+    </style>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -39,8 +92,10 @@
         </tbody>
 
     </table>
-    <div>
-        <a th:href="@{/frmAltaEmpleado}">Formulario de Alta Empleado</a>
+    <div style="text-align: center;">
+        <button class="button">
+            <a href="@{/frmAltaEmpleado}" style="text-decoration:none; color:#050808;">Formulario de Alta Empleado</a>
+        </button>
     </div>
 
 </body>
