@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.method.annotation.ExtendedServletRequestDataBinder;
 
 import com.example.entities.Correo;
 import com.example.entities.Departamento;
@@ -160,6 +161,24 @@ public class MainController {
     public String borrarEmpleado(@PathVariable(name = "id") int idEmpleado) {
         empleadoService.delete(empleadoService.findByÍd(idEmpleado));
         return "redirect:/listar";
+    }
+
+    /***Métoodo que da detalles del empleado */
+    @GetMapping("/detalles/{id}")
+    public String detallesEmpleado(@PathVariable(name = "id") int id, Model model) {
+        Empleado empleado = empleadoService.findByÍd(id);
+        List<Telefono> telefonos = telefonoService.findByEmpleado(empleado);
+        List<String> numerosTelefono = telefonos.stream().map((t -> t.getNumero()))
+        .toList();
+
+        List<Correo> correos = correoService.findByEmpleado(empleado);
+        List<String> emailsCorreo = correos.stream().map(c -> c.getEmail()).toList();
+
+        model.addAttribute("telefonos", numerosTelefono);
+        model.addAttribute("correos", emailsCorreo);
+        model.addAttribute("empleado", empleado);
+
+        return "views/detallesEmpleado";
     }
 
 }
